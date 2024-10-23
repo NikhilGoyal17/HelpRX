@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Medicine Management - Help Rx</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            min-height: 100vh;
+            background-color: #f0f8ff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1000px;
+            background-color: #fff;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+            border: 2px solid #1e90ff;
+            position: relative;
+            overflow: hidden;
+            animation: fadeIn 0.5s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .container h2 {
+            text-align: center;
+            color: #1e90ff;
+            margin-bottom: 30px;
+            transition: color 0.3s ease;
+        }
+
+        .container h2:hover {
+            color: #104e8b;
+        }
+
+        .search-container {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+
+        .search-container input {
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            width: 60%;
+            margin-right: 10px;
+        }
+
+        .search-container button {
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            background-color: #1e90ff;
+            color: white;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .search-container button:hover {
+            background-color: #104e8b;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+
+        th,
+        td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: center;
+            transition: background-color 0.3s ease;
+        }
+
+        th {
+            background-color: #1e90ff;
+            color: white;
+        }
+
+        tr:hover {
+            background-color: #f1f1f1;
+        }
+
+        .action-button {
+            padding: 8px 12px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+            font-size: 14px;
+        }
+
+        .update-button {
+            background-color: #ffa500;
+            color: white;
+        }
+
+        .update-button:hover {
+            background-color: #ff8c00;
+            transform: translateY(-2px);
+        }
+
+        .remove-button {
+            background-color: #ff4500;
+            color: white;
+        }
+
+        .remove-button:hover {
+            background-color: #c0392b;
+            transform: translateY(-2px);
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        @media (max-width: 768px) {
+            th,
+            td {
+                font-size: 12px;
+            }
+
+            .action-button {
+                padding: 6px 10px;
+                font-size: 12px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h2>Admin Medicine Management</h2>
+        <div class="search-container">
+            <input type="text" id="searchInput" placeholder="Search by medicine name..." onkeyup="searchMedicines()">
+            <button id="searchButton">Search</button>
+        </div>
+        <table>
+            <thead>
+                <tr>
+                    <th>Medicine ID</th>
+                    <th>Name</th>
+                    <th>Expiry Date</th>
+                    <th>Status</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody id="medicineTableBody">
+                <!-- Medicine data will be populated here dynamically -->
+            </tbody>
+        </table>
+    </div>
+
+    <script>
+        // Sample data for medicine management (replace with actual data from your database)
+        const medicines = [
+            { id: 1, name: 'Aspirin', expiry: '2024-12-01', status: 'Available' },
+            { id: 2, name: 'Ibuprofen', expiry: '2023-09-15', status: 'Expired' },
+            { id: 3, name: 'Paracetamol', expiry: '2025-01-10', status: 'Available' },
+            { id: 4, name: 'Blood Donation Pack', expiry: '2024-09-20', status: 'Expired' },
+        ];
+
+        // Populate medicine table
+        const medicineTableBody = document.getElementById('medicineTableBody');
+        const loadMedicineTable = () => {
+            medicineTableBody.innerHTML = '';
+            medicines.forEach(medicine => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>${medicine.id}</td>
+                    <td>${medicine.name}</td>
+                    <td>${medicine.expiry}</td>
+                    <td>${medicine.status}</td>
+                    <td>
+                        <button class="action-button update-button" onclick="updateMedicine(${medicine.id})">Update</button>
+                        <button class="action-button remove-button" onclick="removeMedicine(${medicine.id})">Remove</button>
+                    </td>
+                `;
+                medicineTableBody.appendChild(row);
+            });
+        };
+
+        loadMedicineTable(); // Initial load of the medicine table
+
+        // Search medicines by name
+        function searchMedicines() {
+            const searchInput = document.getElementById('searchInput').value.toLowerCase();
+            const filteredMedicines = medicines.filter(medicine => medicine.name.toLowerCase().includes(searchInput));
+            medicineTableBody.innerHTML = ''; // Clear the table
+
+            filteredMedicines.forEach(medicine => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>${medicine.id}</td>
+                    <td>${medicine.name}</td>
+                    <td>${medicine.expiry}</td>
+                    <td>${medicine.status}</td>
+                    <td>
+                        <button class="action-button update-button" onclick="updateMedicine(${medicine.id})">Update</button>
+                        <button class="action-button remove-button" onclick="removeMedicine(${medicine.id})">Remove</button>
+                    </td>
+                `;
+                medicineTableBody.appendChild(row);
+            });
+        }
+
+        // Update medicine function
+        function updateMedicine(medicineId) {
+            const medicineIndex = medicines.findIndex(m => m.id === medicineId);
+            if (medicineIndex !== -1) {
+                const newName = prompt("Enter new name for the medicine:", medicines[medicineIndex].name);
+                const newExpiry = prompt("Enter new expiry date for the medicine (YYYY-MM-DD):", medicines[medicineIndex].expiry);
+
+                if (newName && newExpiry) {
+                    medicines[medicineIndex].name = newName;
+                    medicines[medicineIndex].expiry = newExpiry;
+                    alert(`Medicine ${newName} has been updated.`);
+                    loadMedicineTable(); // Reload the medicine table
+                }
+            }
+        }
+
+        // Remove medicine function
+        function removeMedicine(medicineId) {
+            const medicineIndex = medicines.findIndex(m => m.id === medicineId);
+            if (medicineIndex !== -1) {
+                if (confirm(`Are you sure you want to remove ${medicines[medicineIndex].name}?`)) {
+                    medicines.splice(medicineIndex, 1); // Remove the medicine
+                    alert(`Medicine ${medicines[medicineIndex].name} has been removed.`);
+                    loadMedicineTable(); // Reload the medicine table
+                }
+            }
+        }
+
+        // Function to remove expired medicines automatically
+        function removeExpiredMedicines() {
+            const currentDate = new Date();
+            medicines.forEach((medicine, index) => {
+                if (new Date(medicine.expiry) < currentDate) {
+                    medicines.splice(index, 1);
+                }
+            });
+            loadMedicineTable(); // Reload the medicine table after removal
+        }
+
+        // Call function to remove expired medicines on page load
+        removeExpiredMedicines();
+    </script>
+</body>
+
+</html>

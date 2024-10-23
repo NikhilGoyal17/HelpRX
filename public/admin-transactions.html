@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Transaction Verification - Help Rx</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            min-height: 100vh;
+            background-color: #f0f8ff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1000px;
+            background-color: #fff;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+            border: 2px solid #1e90ff;
+            position: relative;
+            overflow: hidden;
+            animation: fadeIn 0.5s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .container h2 {
+            text-align: center;
+            color: #1e90ff;
+            margin-bottom: 30px;
+            transition: color 0.3s ease;
+        }
+
+        .container h2:hover {
+            color: #104e8b;
+        }
+
+        .search-container {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+
+        .search-container input {
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            width: 60%;
+            margin-right: 10px;
+        }
+
+        .search-container button {
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            background-color: #1e90ff;
+            color: white;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .search-container button:hover {
+            background-color: #104e8b;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+
+        th,
+        td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: center;
+            transition: background-color 0.3s ease;
+        }
+
+        th {
+            background-color: #1e90ff;
+            color: white;
+        }
+
+        tr:hover {
+            background-color: #f1f1f1;
+        }
+
+        .action-button {
+            padding: 8px 12px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+            font-size: 14px;
+        }
+
+        .verify-button {
+            background-color: #32cd32;
+            color: white;
+        }
+
+        .verify-button:hover {
+            background-color: #28a745;
+            transform: translateY(-2px);
+        }
+
+        .block-button {
+            background-color: #ff4500;
+            color: white;
+        }
+
+        .block-button:hover {
+            background-color: #c0392b;
+            transform: translateY(-2px);
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        @media (max-width: 768px) {
+            th,
+            td {
+                font-size: 12px;
+            }
+
+            .action-button {
+                padding: 6px 10px;
+                font-size: 12px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h2>Admin Transaction Verification</h2>
+        <div class="search-container">
+            <input type="text" id="searchInput" placeholder="Search by transaction ID or user name..." onkeyup="searchTransactions()">
+            <button id="searchButton">Search</button>
+        </div>
+        <table>
+            <thead>
+                <tr>
+                    <th>Transaction ID</th>
+                    <th>User Name</th>
+                    <th>Amount</th>
+                    <th>Status</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody id="transactionTableBody">
+                <!-- Transaction data will be populated here dynamically -->
+            </tbody>
+        </table>
+    </div>
+
+    <script>
+        // Sample data for transaction management (replace with actual data from your database)
+        const transactions = [
+            { id: 1, userName: 'JohnDoe', amount: 100, status: 'Pending' },
+            { id: 2, userName: 'JaneSmith', amount: 200, status: 'Completed' },
+            { id: 3, userName: 'SpamUser', amount: 5000, status: 'Pending' },
+            { id: 4, userName: 'AliceJohnson', amount: 150, status: 'Completed' },
+        ];
+
+        // Populate transaction table
+        const transactionTableBody = document.getElementById('transactionTableBody');
+        const loadTransactionTable = () => {
+            transactionTableBody.innerHTML = '';
+            transactions.forEach(transaction => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>${transaction.id}</td>
+                    <td>${transaction.userName}</td>
+                    <td>${transaction.amount}</td>
+                    <td>${transaction.status}</td>
+                    <td>
+                        <button class="action-button verify-button" onclick="verifyTransaction(${transaction.id})">Verify</button>
+                        <button class="action-button block-button" onclick="blockUser('${transaction.userName}')">Block User</button>
+                    </td>
+                `;
+                transactionTableBody.appendChild(row);
+            });
+        };
+
+        loadTransactionTable(); // Initial load of the transaction table
+
+        // Search transactions by ID or user name
+        function searchTransactions() {
+            const searchInput = document.getElementById('searchInput').value.toLowerCase();
+            const filteredTransactions = transactions.filter(transaction => 
+                transaction.userName.toLowerCase().includes(searchInput) || transaction.id.toString().includes(searchInput)
+            );
+            transactionTableBody.innerHTML = ''; // Clear the table
+
+            filteredTransactions.forEach(transaction => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>${transaction.id}</td>
+                    <td>${transaction.userName}</td>
+                    <td>${transaction.amount}</td>
+                    <td>${transaction.status}</td>
+                    <td>
+                        <button class="action-button verify-button" onclick="verifyTransaction(${transaction.id})">Verify</button>
+                        <button class="action-button block-button" onclick="blockUser('${transaction.userName}')">Block User</button>
+                    </td>
+                `;
+                transactionTableBody.appendChild(row);
+            });
+        }
+
+        // Verify transaction function
+        function verifyTransaction(transactionId) {
+            const transaction = transactions.find(t => t.id === transactionId);
+            if (transaction) {
+                transaction.status = 'Completed'; // Change the status to completed
+                alert(`Transaction ${transactionId} has been verified.`);
+                loadTransactionTable(); // Reload the transaction table
+            }
+        }
+
+        // Block user function
+        function blockUser(userName) {
+            if (confirm(`Are you sure you want to block user ${userName}?`)) {
+                alert(`User ${userName} has been blocked.`);
+                // Logic to block the user in the backend should be added here
+            }
+        }
+    </script>
+</body>
+
+</html>

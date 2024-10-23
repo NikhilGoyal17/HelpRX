@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Help Rx - Health Policy Dashboard</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: #e9f7ff;
+      color: #333;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      min-height: 100vh;
+      padding: 20px;
+    }
+
+    .container {
+      background-color: #fff;
+      border-radius: 15px;
+      box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+      overflow: hidden;
+      transition: transform 0.3s ease;
+      width: 100%;
+      max-width: 800px;
+      padding: 30px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .container:hover {
+      transform: translateY(-5px);
+    }
+
+    h2 {
+      text-align: center;
+      color: #007bff;
+      margin-bottom: 20px;
+      animation: slideIn 0.5s forwards;
+      opacity: 0;
+    }
+
+    p {
+      line-height: 1.6;
+      text-align: justify;
+      animation: fadeIn 0.6s forwards;
+      opacity: 0;
+    }
+
+    ul {
+      margin: 20px 0;
+      list-style: none;
+      animation: fadeIn 0.8s forwards;
+      opacity: 0;
+    }
+
+    li {
+      margin: 10px 0;
+      padding: 10px;
+      border-left: 4px solid #007bff;
+      transition: background 0.3s ease, transform 0.3s ease;
+    }
+
+    li:hover {
+      background: #f0f8ff;
+      transform: translateX(5px);
+    }
+
+    .signature-container {
+      margin-top: 30px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .signature-input {
+      padding: 10px;
+      width: 100%;
+      border: 2px solid #007bff;
+      border-radius: 5px;
+      transition: border-color 0.3s ease, box-shadow 0.3s ease;
+      outline: none;
+      margin-bottom: 10px;
+    }
+
+    .signature-input:focus {
+      border-color: #0056b3;
+      box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+    }
+
+    .checkbox-container {
+      display: flex;
+      align-items: center;
+      margin-top: 10px;
+    }
+
+    .checkbox-container input {
+      margin-right: 10px;
+    }
+
+    button {
+      padding: 15px;
+      background-color: #007bff;
+      color: white;
+      font-size: 16px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      margin-top: 20px;
+      transition: background-color 0.3s ease, transform 0.3s ease;
+      width: 100%;
+    }
+
+    button:hover {
+      background-color: #0056b3;
+      transform: translateY(-3px);
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    .tab-container {
+      display: flex;
+      justify-content: space-around;
+      margin-bottom: 20px;
+      border-bottom: 2px solid #ddd;
+    }
+
+    .tab {
+      padding: 10px 20px;
+      cursor: pointer;
+      transition: color 0.3s ease, transform 0.3s ease;
+    }
+
+    .tab:hover,
+    .tab.active {
+      color: #0056b3;
+      border-bottom: 2px solid #0056b3;
+    }
+
+    .content {
+      display: none;
+    }
+
+    .show {
+      display: block;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    @keyframes slideIn {
+      from { transform: translateY(-20px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+
+    @media (max-width: 768px) {
+      .container {
+        padding: 20px;
+      }
+
+      h2 {
+        font-size: 1.5em;
+      }
+
+      button {
+        width: 100%;
+      }
+
+      .tab-container {
+        flex-direction: column;
+        gap: 10px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="tab-container">
+      <div class="tab active" data-target="policy">Privacy Policy</div>
+      <div class="tab" data-target="faq">FAQs</div>
+      <div class="tab" data-target="terms">Terms and Conditions</div>
+    </div>
+
+    <div class="content show" id="policy">
+      <h2>Privacy Policy</h2>
+      <p>At Help Rx, your privacy is our utmost priority. We are committed to safeguarding your personal information in compliance with all applicable laws and regulations. Your data is collected and used only with your explicit consent for enhancing your experience and delivering personalized healthcare services. We ensure that all information is stored securely and access is strictly controlled to prevent unauthorized use. We do not share your information without your permission except when required by law. You have the right to access and amend your personal data at any time. Our privacy policy is designed to provide transparency and control over your personal information. If you have any questions, feel free to reach out.</p>
+    </div>
+
+    <div class="content" id="faq">
+      <h2>Frequently Asked Questions (FAQ)</h2>
+      <ul>
+        <li><strong>Q: How can I donate items?</strong><br>A: Fill out the donation form available on our website.</li>
+        <li><strong>Q: What types of items can I donate?</strong><br>A: Medicines, medical instruments, and health-related items.</li>
+        <li><strong>Q: Is there a limit to my donations?</strong><br>A: No, you can donate as much as you wish.</li>
+        <li><strong>Q: How do I know my donation is making a difference?</strong><br>A: We collaborate with reputable organizations to ensure effective distribution.</li>
+        <li><strong>Q: What should I do if I face issues while donating?</strong><br>A: Contact our support team for immediate assistance.</li>
+        <li><strong>Q: Can I cancel a donation?</strong><br>A: Donations cannot be canceled post-submission, but we can guide you.</li>
+        <li><strong>Q: Is my personal information secure with Help Rx?</strong><br>A: Yes, we employ strong security measures to protect your data.</li>
+        <li><strong>Q: Can I update my donation information?</strong><br>A: Yes, contact us to modify your donation details.</li>
+        <li><strong>Q: How long is my information stored?</strong><br>A: We retain your data only as long as necessary to provide services.</li>
+        <li><strong>Q: Who can I reach out to for further inquiries?</strong><br>A: Our support team is available via the contact form on our website.</li>
+      </ul>
+    </div>
+
+    <div class="content" id="terms">
+      <h2>Terms and Conditions</h2>
+      <p>Welcome to Help Rx! By accessing our website and using our services, you agree to comply with the following terms and conditions. Please read them carefully:</p>
+      <ul>
+        <li><strong>Eligibility:</strong> You must be 18 years or older to use our services.</li>
+        <li><strong>Account Security:</strong> You are responsible for safeguarding your account credentials and all activities under your account.</li>
+        <li><strong>Donation Policy:</strong> Once submitted, donations cannot be withdrawn or canceled. Ensure all details are accurate before submission.</li>
+        <li><strong>Content Ownership:</strong> All content on Help Rx, including text, graphics, and logos, is owned by Help Rx. You may not copy or use any content without permission.</li>
+        <li><strong>Privacy:</strong> Your use of Help Rx is also governed by our Privacy Policy.</li>
+        <li><strong>Limitation of Liability:</strong> Help Rx is not liable for any damages resulting from your use of our services.</li>
+        <li><strong>Changes to Terms:</strong> We may modify these terms at any time, and such modifications will take effect immediately.</li>
+      </ul>
+    </div>
+
+    <div class="signature-container">
+      <input type="text" class="signature-input" placeholder="Digital Signature (Type your name)" required>
+      <div class="checkbox-container">
+        <input type="checkbox" id="agreement" required>
+        <label for="agreement">I agree to the Privacy Policy, FAQs, and Terms and Conditions.</label>
+      </div>
+      <button type="submit" onclick="doSubmit(event)">Submit</button>
+    </div>
+  </div>
+
+  <script>
+    const tabs = document.querySelectorAll('.tab');
+    const contents = document.querySelectorAll('.content');
+
+    tabs.forEach(tab => {
+      tab.addEventListener('click', () => {
+        tabs.forEach(t => t.classList.remove('active'));
+        tab.classList.add('active');
+
+        const target = tab.getAttribute('data-target');
+        contents.forEach(content => {
+          content.classList.remove('show');
+          if (content.id === target) {
+            content.classList.add('show');
+          }
+        });
+      });
+    });
+    function doSubmit(e){
+      e.preventDefault();
+      // alert(localStorage.getItem(userType));
+      if(localStorage.getItem('userType')==="needy"){
+        
+        location.href='./needy.html'
+      }
+      else{
+        location.href='./donor.html'
+      }
+    }
+  </script>
+</body>
+</html>

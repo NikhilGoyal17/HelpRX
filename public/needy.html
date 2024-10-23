@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Needy Page - Help Rx</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            min-height: 100vh;
+            background-color: #f0f8ff;
+            /* display: flex; */
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            /* overflow: hidden; */
+        }
+
+        .container-1 {
+            width: 90%;
+            max-width: 900px;
+            background-color: #fff;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+            border: 2px solid #1e90ff;
+            position: relative;
+            overflow: hidden;
+            animation: fadeIn 0.5s ease-in-out;
+            margin-top: 2.5%;
+            margin-left: 20.5%;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .container-1 h2 {
+            text-align: center;
+            color: #1e90ff;
+            margin-bottom: 30px;
+            transition: color 0.3s ease;
+        }
+
+        .container-1 h2:hover {
+            color: #104e8b;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            animation: slideIn 0.5s ease-in-out;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateX(-20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .form-group label {
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            padding: 12px;
+            border: 2px solid #1e90ff;
+            border-radius: 5px;
+            font-size: 16px;
+            outline: none;
+            transition: all 0.3s ease;
+            box-shadow: 0 0 5px rgba(0, 0, 255, 0.3);
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            border-color: #104e8b;
+            box-shadow: 0 0 10px rgba(30, 144, 255, 0.7);
+        }
+
+        button {
+            padding: 15px;
+            background-color: #1e90ff;
+            color: white;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 20px;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        button:hover {
+            background-color: #104e8b;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        button:after {
+            content: "";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 300%;
+            height: 300%;
+            background: rgba(255, 255, 255, 0.1);
+            transition: all 0.5s ease;
+            border-radius: 50%;
+            transform: translate(-50%, -50%) scale(0);
+            z-index: 0;
+        }
+
+        button:hover:after {
+            transform: translate(-50%, -50%) scale(1);
+        }
+
+        @media (max-width: 768px) {
+            .form-group input,
+            .form-group select,
+            .form-group textarea {
+                font-size: 14px;
+            }
+        }
+
+        .hidden {
+            display: none;
+        }
+    </style>
+    <link rel="stylesheet" href="./css/bootstrap.min.css">
+    <link rel="stylesheet" href="./css/style.css">
+</head>
+
+<body>
+<!-- Topbar Start -->
+    <div class="container-fluid bg-light p-0 wow fadeIn" data-wow-delay="0.1s">
+        <div class="row gx-0 d-none d-lg-flex">
+            <div class="col-lg-7 px-5 text-start">
+                <div class="h-100 d-inline-flex align-items-center py-3 me-4">
+                    <small class="fa fa-map-marker-alt text-primary me-2"></small>
+                    <small>Punjab, India</small>
+                </div>
+                <div class="h-100 d-inline-flex align-items-center py-3">
+                    <small class="far fa-clock text-primary me-2"></small>
+                    <small>Mon - Sat : 09.00 AM - 09.00 PM</small>
+                </div>
+            </div>
+            <div class="col-lg-5 px-5 text-end">
+                <div class="h-100 d-inline-flex align-items-center py-3 me-4">
+                    <small class="fa fa-phone-alt text-primary me-2"></small>
+                    <small>+91 98765-XXXXX</small>
+                </div>
+                <div class="h-100 d-inline-flex align-items-center">
+                    <a href="https://www.facebook.com/" class="btn btn-sm-square rounded-circle  text-primary me-1" href=""><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://x.com/" class="btn btn-sm-square rounded-circle  text-primary me-1" href=""><i class="fab fa-twitter"></i></a>
+                    <a href="https://www.linkedin.com/in/nikhil-goyal-841085304/" class="btn btn-sm-square rounded-circle  text-primary me-1" href=""><i class="fab fa-linkedin-in"></i></a>
+                    <a href="https://www.instagram.com/" class="btn btn-sm-square rounded-circle  text-primary me-1" href=""><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+<!-- Topbar End -->
+
+
+<!-- Navbar Start -->
+<nav class="navbar navbar-expand-lg bg-white navbar-light sticky-top p-0 wow fadeIn" data-wow-delay="0.1s">
+    <a href="index.html" class="navbar-brand d-flex align-items-center px-4 px-lg-5">
+        <h1 class="m-0 text-primary"><i class="far fa-hospital me-3"></i>Help-RX</h1>
+    </a>
+    <button type="button" class="navbar-toggler me-4" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarCollapse">
+        <div class="navbar-nav ms-auto p-4 p-lg-0">
+            <a href="index.html" class="nav-item nav-link ">Home</a>
+            <a href="donor.html" class="nav-item nav-link active">Needy</a>
+            
+            <a href="profile.html" class="nav-item nav-link">Profile</a>
+            <a href="settings.html" class="nav-item nav-link">Settings</a>
+            <a href="index.html" class="nav-item nav-link">LOGOUT</a>
+        </div>
+        <!-- <a href="./login.html" class="btn btn-primary rounded-0 py-4 px-lg-5 d-none d-lg-block">Get Started<i class="fa fa-arrow-right ms-3"></i></a> -->
+    </div>
+</nav>
+<!-- Navbar End -->
+    <div class="container-1">
+        <h2>Request Assistance</h2>
+        <form id="needyForm">
+            <div class="form-group">
+                <label for="itemRequired">Item Required</label>
+                <select id="itemRequired" required>
+                    <option value="" disabled selected>Select Item Required</option>
+                    <option value="Medicine">Medicine</option>
+                    <option value="Blood">Blood</option>
+                    <option value="Instrument">Instrument</option>
+                    <option value="Other">Other</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="quantity">Quantity</label>
+                <input type="number" id="quantity" min="1" required>
+            </div>
+            <div class="form-group">
+                <label for="costRange">Cost Range (in INR)</label>
+                <input type="text" id="costRange" placeholder="e.g. 100-500" required>
+            </div>
+            <div class="form-group medicine-details hidden">
+                <label for="expiryDate">Expiry Date (For Medicines)</label>
+                <input type="date" id="expiryDate" required>
+            </div>
+            <div class="form-group blood-details hidden">
+                <label for="bloodType">Blood Type</label>
+                <select id="bloodType" required>
+                    <option value="" disabled selected>Select Blood Type</option>
+                    <option value="A+">A+</option>
+                    <option value="A-">A-</option>
+                    <option value="B+">B+</option>
+                    <option value="B-">B-</option>
+                    <option value="AB+">AB+</option>
+                    <option value="AB-">AB-</option>
+                    <option value="O+">O+</option>
+                    <option value="O-">O-</option>
+                </select>
+                <label for="bloodAge">Blood Taken (in days)</label>
+                <input type="number" id="bloodAge" min="1" required>
+            </div>
+            <div class="form-group instrument-details hidden">
+                <label for="instrumentAge">How much old the Instrument is (in years)</label>
+                <input type="number" id="instrumentAge" min="1" required>
+            </div>
+            <div class="form-group other-details hidden">
+                <label for="otherDescription">Full Description of Item</label>
+                <textarea id="otherDescription" rows="4" placeholder="Provide a detailed description "></textarea>
+            </div>
+            <div class="form-group">
+                <label for="timeLimit">Time Limit Required</label>
+                <select id="timeLimit" required>
+                    <option value="" disabled selected>Select Time Limit</option>
+                    <option value="Emergency - Within 1 Day">Emergency - Within 1 Day</option>
+                    <option value="Within 2 Days">Within 2 Days</option>
+                    <option value="Further">Further</option>
+                </select>
+            </div>
+            <button type="submit">Ask for Help</button>
+        </form>
+    </div>
+<!-- Footer Start -->
+<div class="container-fluid bg-dark text-light footer mt-5 pt-5 wow fadeIn" data-wow-delay="0.1s">
+    <div class="container py-5">
+        <div class="row g-5">
+            <div class="col-lg-3 col-md-6">
+                <h5 class="text-light mb-4">Address</h5>
+                <p class="mb-2"><i class="fa fa-map-marker-alt me-3"></i>Punjab, India</p>
+                <p class="mb-2"><i class="fa fa-phone-alt me-3"></i>+91 98765-XXXXX</p>
+                <p class="mb-2"><i class="fa fa-envelope me-3"></i>help.rx@support.com</p>
+                <div class="d-flex pt-2">
+                    <a class="btn btn-outline-light btn-social rounded-circle" href=""><i class="fab fa-twitter"></i></a>
+                    <a class="btn btn-outline-light btn-social rounded-circle" href=""><i class="fab fa-facebook-f"></i></a>
+                    <a class="btn btn-outline-light btn-social rounded-circle" href=""><i class="fab fa-youtube"></i></a>
+                    <a class="btn btn-outline-light btn-social rounded-circle" href=""><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6">
+                <h5 class="text-light mb-4">Services</h5>
+                <a class="btn btn-link" href="">Best Medicines</a>
+                <a class="btn btn-link" href="">Medicine Tracking</a>
+                <a class="btn btn-link" href="">Verification</a>
+                <a class="btn btn-link" href="">Support 24 x 7</a>
+            </div>
+            <div class="col-lg-3 col-md-6">
+                <h5 class="text-light mb-4">Quick Links</h5>
+                <a class="btn btn-link" href="">About Us</a>
+                <a class="btn btn-link" href="">Contact Us</a>
+                <a class="btn btn-link" href="">Our Services</a>
+                <a class="btn btn-link" href="">Terms & Condition</a>
+            </div>
+            <div class="col-lg-3 col-md-6">
+                <h5 class="text-light mb-4">Having Query?</h5>
+                <p>Add Your Mail to our Data-Set Our Team will Reach you Shortly...</p>
+                <div class="position-relative mx-auto" style="max-width: 400px;">
+                    <input class="form-control border-0 w-100 py-3 ps-4 pe-5" type="text" placeholder="Your email">
+                    <button type="button" class="btn btn-primary py-2 position-absolute top-0 end-0 mt-2 me-2">Send</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container" style="justify-items: center;">
+        <div class="copyright">
+            <div class="row">
+                <div class="col-md-6 text-center text-md-start mb-3 mb-md-0" style="margin-left: 40%;">
+                    &copy; <a class="border-bottom" href="#">HELP-RX</a>, All Right Reserved.
+                </div>
+        </div>
+    </div>
+</div>
+<!-- Footer End -->
+    <script>
+        // Toggle visibility of specific fields based on item type selection
+        document.getElementById('itemRequired').addEventListener('change', function () {
+            const selectedType = this.value;
+
+            // Hide all dynamic fields first
+            document.querySelector('.medicine-details').classList.add('hidden');
+            document.querySelector('.blood-details').classList.add('hidden');
+            document.querySelector('.instrument-details').classList.add('hidden');
+            document.querySelector('.other-details').classList.add('hidden');
+
+            // Show relevant fields based on selection
+            if (selectedType === 'Medicine') {
+                document.querySelector('.medicine-details').classList.remove('hidden');
+            } else if (selectedType === 'Blood') {
+                document.querySelector('.blood-details').classList.remove('hidden');
+            } else if (selectedType === 'Instrument') {
+                document.querySelector('.instrument-details').classList.remove('hidden');
+            } else if (selectedType === 'Other') {
+                document.querySelector('.other-details').classList.remove('hidden');
+            }
+        });
+
+        // Form submission handler
+        document.getElementById('needyForm').addEventListener('submit', function (e) {
+            e.preventDefault();
+            alert('Your request for assistance has been submitted!');
+            this.reset();
+            document.querySelector('.medicine-details').classList.add('hidden');
+            document.querySelector('.blood-details').classList.add('hidden');
+            document.querySelector('.instrument-details').classList.add('hidden');
+            document.querySelector('.other-details').classList.add('hidden');
+        });
+    </script>
+</body>
+
+</html>
