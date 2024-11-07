@@ -1,0 +1,172 @@
+/* Basic reset */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Arial', sans-serif;
+}
+
+/* Container styling */
+.container-store {
+    padding: 20px;
+    background-color: #f0f4f8; /* Light gray background */
+    min-height: 100vh;
+}
+
+/* Page title styling */
+h1 {
+    color: #007bff; /* Blue */
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 2.5em;
+    text-transform: uppercase;
+}
+
+/* Grid layout for cards */
+.card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+    padding: 10px;
+}
+
+/* Card container */
+.card {
+    border-radius: 10px;
+    overflow: hidden;
+    background-color: #ffffff; /* White background */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    position: relative;
+}
+
+.card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.2);
+}
+
+/* Discount badge */
+.discount-badge {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background-color: #ff1744;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 0.9em;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+/* Card image */
+.card-header img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-bottom: 4px solid #007bff;
+}
+
+/* Heart button */
+.heart-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 1.5em;
+    color: #ccc;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 5px;
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.heart-btn.active {
+    color: #ff1744;
+}
+
+/* Add to Cart button */
+.card-btn {
+    position: absolute;
+    /* bottom: 0; */
+    margin-top: 45.8%;
+    left: 0;
+    width: 100%;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 12px 0;
+    font-size: 1em;
+    font-weight: bold;
+    text-transform: uppercase;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+}
+
+.card:hover .card-btn {
+    opacity: 1;
+}
+
+.card-btn:hover {
+    background-color: #0056b3; /* Darker blue */
+}
+
+/* Card body */
+.card-body {
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.medicine-name {
+    font-size: 1.2em;
+    font-weight: bold;
+    color: #007bff;
+}
+
+.card-text {
+    font-size: 0.9em;
+    color: #666;
+    margin-top: 5px;
+}
+
+.price {
+    color: #007bff;
+    font-size: 1.1em;
+    font-weight: bold;
+    align-self: flex-end;
+}
+
+/* Star rating */
+.rating {
+    display: flex;
+    align-items: center;
+    color: #FFD700;
+}
+
+.rating i {
+    margin-right: 3px;
+}
+
+.category-heading {
+    font-size: 2.5em;
+    margin-top: 20px;
+    color: #007bff;
+    grid-column: 1 / -1;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.category-heading::before,
+.category-heading::after {
+    content: "";
+    flex: 1;
+    height: 2px;
+    background-color: #007bff; /* Same color as your text */
+    margin: 0 15px; /* Adjusts space between line and text */
+}
+

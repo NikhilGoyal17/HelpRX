@@ -21,7 +21,6 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            position: relative;
             overflow: hidden;
         }
 
@@ -33,32 +32,35 @@
             border-radius: 10px;
             box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
             border: 2px solid #1e90ff;
-            position: relative;
-            overflow: hidden;
-            animation: fadeIn 0.5s ease-in-out;
+            animation: slideIn 0.5s ease-in-out;
         }
 
-        @keyframes fadeIn {
+        @keyframes slideIn {
             from {
-                opacity: 0;
                 transform: translateY(-20px);
+                opacity: 0;
             }
-
             to {
-                opacity: 1;
                 transform: translateY(0);
+                opacity: 1;
             }
         }
 
         .container h2 {
             text-align: center;
             color: #1e90ff;
+            font-size: 1.8em;
             margin-bottom: 30px;
-            transition: color 0.3s ease;
+            animation: colorChange 2s infinite alternate;
         }
 
-        .container h2:hover {
-            color: #104e8b;
+        @keyframes colorChange {
+            from {
+                color: #1e90ff;
+            }
+            to {
+                color: #104e8b;
+            }
         }
 
         .search-container {
@@ -73,6 +75,11 @@
             border-radius: 5px;
             width: 60%;
             margin-right: 10px;
+            transition: box-shadow 0.3s ease;
+        }
+
+        .search-container input:focus {
+            box-shadow: 0 0 5px #1e90ff;
         }
 
         .search-container button {
@@ -95,8 +102,7 @@
             margin-bottom: 20px;
         }
 
-        th,
-        td {
+        th, td {
             border: 1px solid #ddd;
             padding: 12px;
             text-align: center;
@@ -109,7 +115,7 @@
         }
 
         tr:hover {
-            background-color: #f1f1f1;
+            background-color: #f9f9f9;
         }
 
         .action-button {
@@ -117,7 +123,7 @@
             border: none;
             border-radius: 5px;
             cursor: pointer;
-            transition: background-color 0.3s ease, transform 0.3s ease;
+            transition: transform 0.3s ease;
             font-size: 14px;
         }
 
@@ -127,8 +133,7 @@
         }
 
         .block-button:hover {
-            background-color: #c0392b;
-            transform: translateY(-2px);
+            transform: scale(1.1);
         }
 
         .resume-button {
@@ -137,8 +142,7 @@
         }
 
         .resume-button:hover {
-            background-color: #28a745;
-            transform: translateY(-2px);
+            transform: scale(1.1);
         }
 
         .notify-button {
@@ -147,24 +151,7 @@
         }
 
         .notify-button:hover {
-            background-color: #104e8b;
-            transform: translateY(-2px);
-        }
-
-        .hidden {
-            display: none;
-        }
-
-        @media (max-width: 768px) {
-            th,
-            td {
-                font-size: 12px;
-            }
-
-            .action-button {
-                padding: 6px 10px;
-                font-size: 12px;
-            }
+            transform: scale(1.1);
         }
     </style>
 </head>
@@ -190,26 +177,21 @@
                 <!-- User data will be populated here dynamically -->
             </tbody>
         </table>
-        <div id="userProfile" class="hidden">
-            <h3>User Profile</h3>
-            <p id="profileDetails"></p>
-            <button id="blockUser" class="action-button block-button hidden">Block User</button>
-            <button id="resumeUser" class="action-button resume-button hidden">Resume User</button>
-            <button id="sendNotification" class="action-button notify-button hidden">Send Notification</button>
-        </div>
     </div>
 
     <script>
-        // Sample data for user management (replace with actual data from your database)
+        // Random sample data for user management
         const users = [
-            { id: 1, name: 'John Doe', email: 'john@example.com', status: 'Active' },
-            { id: 2, name: 'Jane Smith', email: 'jane@example.com', status: 'Active' },
-            { id: 3, name: 'Spam User', email: 'spam@example.com', status: 'Blocked' },
-            { id: 4, name: 'Alice Brown', email: 'alice@example.com', status: 'Active' },
+            { id: 1, name: 'Aiden Williams', email: 'aiden.williams@email.com', status: 'Active' },
+            { id: 2, name: 'Sophia Brown', email: 'sophia.brown@email.com', status: 'Active' },
+            { id: 3, name: 'Ethan Davis', email: 'ethan.davis@email.com', status: 'Blocked' },
+            { id: 4, name: 'Emma Johnson', email: 'emma.johnson@email.com', status: 'Active' },
+            { id: 5, name: 'Liam Miller', email: 'liam.miller@email.com', status: 'Active' },
+            { id: 6, name: 'Olivia Moore', email: 'olivia.moore@email.com', status: 'Blocked' }
         ];
 
-        // Populate user table
         const userTableBody = document.getElementById('userTableBody');
+
         const loadUserTable = () => {
             userTableBody.innerHTML = '';
             users.forEach(user => {
@@ -220,8 +202,8 @@
                     <td>${user.email}</td>
                     <td>${user.status}</td>
                     <td>
-                        <button class="action-button block-button" onclick="blockUser(${user.id})">Block</button>
-                        <button class="action-button resume-button" onclick="resumeUser(${user.id})">Resume</button>
+                        <button class="action-button block-button" onclick="toggleUserStatus(${user.id}, 'Blocked')">Block</button>
+                        <button class="action-button resume-button" onclick="toggleUserStatus(${user.id}, 'Active')">Resume</button>
                         <button class="action-button notify-button" onclick="notifyUser(${user.id})">Notify</button>
                     </td>
                 `;
@@ -229,14 +211,12 @@
             });
         };
 
-        loadUserTable(); // Initial load of the user table
+        loadUserTable();
 
-        // Search users by name
         function searchUsers() {
             const searchInput = document.getElementById('searchInput').value.toLowerCase();
             const filteredUsers = users.filter(user => user.name.toLowerCase().includes(searchInput));
-            userTableBody.innerHTML = ''; // Clear the table
-
+            userTableBody.innerHTML = '';
             filteredUsers.forEach(user => {
                 const row = document.createElement('tr');
                 row.innerHTML = `
@@ -245,8 +225,8 @@
                     <td>${user.email}</td>
                     <td>${user.status}</td>
                     <td>
-                        <button class="action-button block-button" onclick="blockUser(${user.id})">Block</button>
-                        <button class="action-button resume-button" onclick="resumeUser(${user.id})">Resume</button>
+                        <button class="action-button block-button" onclick="toggleUserStatus(${user.id}, 'Blocked')">Block</button>
+                        <button class="action-button resume-button" onclick="toggleUserStatus(${user.id}, 'Active')">Resume</button>
                         <button class="action-button notify-button" onclick="notifyUser(${user.id})">Notify</button>
                     </td>
                 `;
@@ -254,29 +234,18 @@
             });
         }
 
-        // Block user function
-        function blockUser(userId) {
+        function toggleUserStatus(userId, status) {
             const userIndex = users.findIndex(u => u.id === userId);
             if (userIndex !== -1) {
-                users[userIndex].status = 'Blocked';
-                alert(`User ${users[userIndex].name} has been blocked.`);
-                loadUserTable(); // Reload the user table
+                users[userIndex].status = status;
+                alert(`User ${users[userIndex].name} is now ${status}.`);
+                loadUserTable();
             }
         }
 
-        // Resume user function
-        function resumeUser(userId) {
-            const userIndex = users.findIndex(u => u.id === userId);
-            if (userIndex !== -1) {
-                users[userIndex].status = 'Active';
-                alert(`User ${users[userIndex].name} has been resumed.`);
-                loadUserTable(); // Reload the user table
-            }
-        }
-
-        // Notify user function
         function notifyUser(userId) {
-            alert(`Notification sent to user ID: ${userId}`);
+            const user = users.find(u => u.id === userId);
+            alert(`Notification sent to ${user.name} (${user.email})`);
         }
     </script>
 </body>

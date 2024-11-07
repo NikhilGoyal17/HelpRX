@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Needy Dashboard</title>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500&family=Roboto:wght@500;700;900&display=swap" rel="stylesheet"> 
+
+    <!-- Icon Font Stylesheet -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+
+    <!-- Libraries Stylesheet -->
+    <link href="lib/animate/animate.min.css" rel="stylesheet">
+    <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+    <link href="lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css" rel="stylesheet" />
+
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="./css/style.css">
+    <style>
+        .dashboard-container {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            padding: 40px;
+            max-width: 1000px;
+            margin-left: 18%;
+        }
+        .dashboard-card {
+            background-color: #0d6efd;
+            color: white;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+            transition: transform 0.3s ease-out, box-shadow 0.3s;
+            cursor: pointer;
+            height: 200px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            animation-duration: 1s;
+            animation-fill-mode: both;
+        }
+        /* Hover effects with edge pull-in animations */
+        .dashboard-card:hover {
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+            background-color: #0056b3;
+        }
+        .dashboard-card:nth-child(1):hover {
+            transform: translateX(-10px); /* Left edge */
+        }
+        .dashboard-card:nth-child(2):hover {
+            transform: translateX(10px); /* Right edge */
+        }
+        .dashboard-card:nth-child(3):hover {
+            transform: translateY(-10px); /* Top edge */
+        }
+        .dashboard-card:nth-child(4):hover {
+            transform: translateY(10px); /* Bottom edge */
+        }
+        .dashboard-card .card-icon {
+            font-size: 3em;
+            opacity: 0.7;
+            transition: opacity 0.3s;
+        }
+        .dashboard-card:hover .card-icon {
+            opacity: 0.4;
+        }
+        .dashboard-card .card-content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+        }
+        .dashboard-card .card-name {
+            font-size: 1.5em;
+            font-weight: bold;
+            margin-top: 10px;
+            opacity: 0.9;
+        }
+        /* Hover effect text */
+        .dashboard-card .hover-text {
+            display: none;
+            font-size: 1em;
+            opacity: 0.8;
+            margin-top: 5px;
+            transition: opacity 0.3s;
+        }
+        .dashboard-card:hover .hover-text {
+            display: block;
+            opacity: 1;
+        }
+        /* Entry animations for each card */
+        .dashboard-card:nth-child(1) {
+            animation-name: slideInLeft;
+        }
+        .dashboard-card:nth-child(2) {
+            animation-name: slideInRight;
+        }
+        .dashboard-card:nth-child(3) {
+            animation-name: slideInUp;
+        }
+        .dashboard-card:nth-child(4) {
+            animation-name: slideInDown;
+        }
+        @keyframes slideInLeft {
+            from { transform: translateX(-100%); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+        @keyframes slideInRight {
+            from { transform: translateX(100%); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+        @keyframes slideInUp {
+            from { transform: translateY(100%); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+        @keyframes slideInDown {
+            from { transform: translateY(-100%); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+    </style>
+</head>
+<body>
+
+                <!-- Topbar Start -->
+                <div class="container-fluid bg-light p-0 wow fadeIn" data-wow-delay="0.1s">
+                    <div class="row gx-0 d-none d-lg-flex">
+                        <div class="col-lg-7 px-5 text-start">
+                            <div class="h-100 d-inline-flex align-items-center py-3 me-4">
+                                <small class="fa fa-map-marker-alt text-primary me-2"></small>
+                                <small>Punjab, India</small>
+                            </div>
+                            <div class="h-100 d-inline-flex align-items-center py-3">
+                                <small class="far fa-clock text-primary me-2"></small>
+                                <small>Mon - Sat : 09.00 AM - 09.00 PM</small>
+                            </div>
+                        </div>
+                        <div class="col-lg-5 px-5 text-end">
+                            <div class="h-100 d-inline-flex align-items-center py-3 me-4">
+                                <small class="fa fa-phone-alt text-primary me-2"></small>
+                                <small>+91 98765-XXXXX</small>
+                            </div>
+                            <div class="h-100 d-inline-flex align-items-center">
+                                <a href="https://www.facebook.com/" class="btn btn-sm-square rounded-circle  text-primary me-1" href=""><i class="fab fa-facebook-f"></i></a>
+                                <a href="https://x.com/" class="btn btn-sm-square rounded-circle  text-primary me-1" href=""><i class="fab fa-twitter"></i></a>
+                                <a href="https://www.linkedin.com/in/nikhil-goyal-841085304/" class="btn btn-sm-square rounded-circle  text-primary me-1" href=""><i class="fab fa-linkedin-in"></i></a>
+                                <a href="https://www.instagram.com/" class="btn btn-sm-square rounded-circle  text-primary me-1" href=""><i class="fab fa-instagram"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            <!-- Topbar End -->
+            
+                <!-- Navbar Start -->
+                <nav class="navbar navbar-expand-lg bg-white navbar-light sticky-top p-0 mb-2 wow fadeIn" data-wow-delay="0.1s">
+                    <a href="index.html" class="navbar-brand d-flex align-items-center px-4 px-lg-5">
+                        <h1 class="m-0 text-primary"><i class="far fa-hospital me-3"></i>Needy Dashboard</h1>
+                    </a>
+                    <button type="button" class="navbar-toggler me-4" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                   <div style="margin-left: 56.5%;">
+                       <a href="./card.html" class="btn btn-primary rounded-0 py-4 px-lg-5 d-none d-lg-block">
+                           <i class="fas fa-sign-out-alt me-1"></i> Logout</i>
+                       </a>
+                   </div>
+                </nav>
+
+    <div class="dashboard-container">
+        <div class="dashboard-card" onclick="openPage('./profile')">
+            <div class="card-content">
+                <div class="card-icon"><i class="fas fa-user-circle"></i></div>
+                <div class="card-name">Profile</div>
+                <div class="hover-text">View and update your Profile</div>
+            </div>
+        </div>
+        <div class="dashboard-card" onclick="openPage('./needy')">
+            <div class="card-content">
+                <div class="card-icon"><i class="fas  fa-paper-plane"></i></div>
+                <div class="card-name">Medicine Request</div>
+                <div class="hover-text">Request medicine assistance</div>
+            </div>
+        </div>
+        <div class="dashboard-card" onclick="openPage('./card')">
+            <div class="card-content">
+                <div class="card-icon"><i class="fas fa-pills"></i></div>
+                <div class="card-name">Medicine Store</div>
+                <div class="hover-text">Browse available medicines</div>
+            </div>
+        </div>
+        <div class="dashboard-card" onclick="openPage('./settings')">
+            <div class="card-content">
+                <div class="card-icon"><i class="fas fa-cog"></i></div>
+                <div class="card-name">Settings</div>
+                <div class="hover-text">Adjust your preferences</div>
+            </div>
+        </div>
+    </div>
+   <!-- Footer Start -->
+   <div class="container-fluid bg-dark text-light footer mt-2 pt-5 wow fadeIn" data-wow-delay="0.1s">
+    <div class="container py-5">
+        <div class="row g-5">
+            <div class="col-lg-3 col-md-6">
+                <h5 class="text-light mb-4">Address</h5>
+                <p class="mb-2"><i class="fa fa-map-marker-alt me-3"></i>Punjab, India</p>
+                <p class="mb-2"><i class="fa fa-phone-alt me-3"></i>+91 98765-XXXXX</p>
+                <p class="mb-2"><i class="fa fa-envelope me-3"></i>help.rx@support.com</p>
+                <div class="d-flex pt-2">
+                    <a class="btn btn-outline-light btn-social rounded-circle" href=""><i class="fab fa-twitter"></i></a>
+                    <a class="btn btn-outline-light btn-social rounded-circle" href=""><i class="fab fa-facebook-f"></i></a>
+                    <a class="btn btn-outline-light btn-social rounded-circle" href=""><i class="fab fa-youtube"></i></a>
+                    <a class="btn btn-outline-light btn-social rounded-circle" href=""><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6">
+                <h5 class="text-light mb-4">Services</h5>
+                <a class="btn btn-link" href="">Best Medicines</a>
+                <a class="btn btn-link" href="">Medicine Tracking</a>
+                <a class="btn btn-link" href="">Verification</a>
+                <a class="btn btn-link" href="">Support 24 x 7</a>
+            </div>
+            <div class="col-lg-3 col-md-6">
+                <h5 class="text-light mb-4">Quick Links</h5>
+                <a class="btn btn-link" href="">About Us</a>
+                <a class="btn btn-link" href="">Contact Us</a>
+                <a class="btn btn-link" href="">Our Services</a>
+                <a class="btn btn-link" href="">Terms & Condition</a>
+            </div>
+            <div class="col-lg-3 col-md-6">
+                <h5 class="text-light mb-4">Having Query?</h5>
+                <p>Add Your Mail to our Data-Set Our Team will Reach you Shortly...</p>
+                <div class="position-relative mx-auto" style="max-width: 400px;">
+                    <input class="form-control border-0 w-100 py-3 ps-4 pe-5" type="text" placeholder="Your email">
+                    <button type="button" class="btn btn-primary py-2 position-absolute top-0 end-0 mt-2 me-2">Send</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container" style="justify-items: center;">
+        <div class="copyright">
+            <div class="row">
+                <div class="col-md-6 text-center text-md-start mb-3 mb-md-0" style="margin-left: 40%;">
+                    &copy; <a class="border-bottom" href="#">HELP-RX</a>, All Right Reserved.
+                </div>
+        </div>
+    </div>
+</div>
+</div>
+<!-- Footer End -->
+
+    <script>
+        function openPage(pageName) {
+            window.location.href = pageName + '.html';
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Medicine Store</title>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500&family=Roboto:wght@500;700;900&display=swap" rel="stylesheet"> 
+
+    <!-- Icon Font Stylesheet -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+
+    <!-- Libraries Stylesheet -->
+    <link href="lib/animate/animate.min.css" rel="stylesheet">
+    <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+    <link href="lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css" rel="stylesheet" />
+
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Template Stylesheet -->
+    <link href="css/style.css" rel="stylesheet">
+    <link rel="stylesheet" href="./css/store.css">
+</head>
+        <!-- Topbar Start -->
+        <div class="container-fluid bg-light p-0 wow fadeIn" data-wow-delay="0.1s">
+            <div class="row gx-0 d-none d-lg-flex">
+                <div class="col-lg-7 px-5 text-start">
+                    <div class="h-100 d-inline-flex align-items-center py-3 me-4">
+                        <small class="fa fa-map-marker-alt text-primary me-2"></small>
+                        <small>Punjab, India</small>
+                    </div>
+                    <div class="h-100 d-inline-flex align-items-center py-3">
+                        <small class="far fa-clock text-primary me-2"></small>
+                        <small>Mon - Sat : 09.00 AM - 09.00 PM</small>
+                    </div>
+                </div>
+                <div class="col-lg-5 px-5 text-end">
+                    <div class="h-100 d-inline-flex align-items-center py-3 me-4">
+                        <small class="fa fa-phone-alt text-primary me-2"></small>
+                        <small>+91 98765-XXXXX</small>
+                    </div>
+                    <div class="h-100 d-inline-flex align-items-center">
+                        <a href="https://www.facebook.com/" class="btn btn-sm-square rounded-circle  text-primary me-1" href=""><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://x.com/" class="btn btn-sm-square rounded-circle  text-primary me-1" href=""><i class="fab fa-twitter"></i></a>
+                        <a href="https://www.linkedin.com/in/nikhil-goyal-841085304/" class="btn btn-sm-square rounded-circle  text-primary me-1" href=""><i class="fab fa-linkedin-in"></i></a>
+                        <a href="https://www.instagram.com/" class="btn btn-sm-square rounded-circle  text-primary me-1" href=""><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    <!-- Topbar End -->
+    
+        <!-- Navbar Start -->
+        <nav class="navbar navbar-expand-lg bg-white navbar-light sticky-top p-0 wow fadeIn" data-wow-delay="0.1s">
+            <a href="index.html" class="navbar-brand d-flex align-items-center px-4 px-lg-5">
+                <h1 class="m-0 text-primary"><i class="far fa-hospital me-3"></i>Medicine Store</h1>
+            </a>
+            <button type="button" class="navbar-toggler me-4" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarCollapse">
+                <div class="navbar-nav ms-auto p-4 p-lg-0">
+                    <!-- Search Bar -->
+                    <form class="d-flex me-3" role="search">
+                        <input class="form-control me-2" type="search" placeholder="Search medicines" aria-label="Search" id="searchInput">
+                        <button class="btn btn-outline-primary" type="button" onclick="searchMedicines()">
+                            <i class="fas fa-search"></i>
+                        </button>
+                    </form>
+                    
+                    <!-- Filter Option -->
+                    <div class="dropdown me-3">
+                        <button class="btn btn-outline-primary dropdown-toggle" type="button" id="filterDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                            Filter
+                        </button>
+                        <ul class="dropdown-menu" aria-labelledby="filterDropdown">
+                            <li><a class="dropdown-item" href="#" >All</a></li>
+                            <li><a class="dropdown-item" href="#" >Prescription Required</a></li>
+                            <li><a class="dropdown-item" href="#" >Non-Prescription</a></li>
+                            <li><a class="dropdown-item" href="#" >On Discount</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <a href="./cart.html" class="btn btn-primary rounded-0 py-4 px-lg-5 d-none d-lg-block">
+                    <i class="fas fa-shopping-cart"></i> Cart<i class="fa fa-arrow-right ms-3"></i>
+                </a>
+            </div>
+        </nav>
+        <!-- Navbar End -->
+    <div class="container-store">
+        <!-- <h1>Medicine Store</h1> -->
+        <div class="card-grid">
+        </div>
+    </div>
+
+        <!-- Footer Start -->
+        <div class="container-fluid bg-dark text-light footer mt-5 pt-5 wow fadeIn" data-wow-delay="0.1s">
+            <div class="container py-5">
+                <div class="row g-5">
+                    <div class="col-lg-3 col-md-6">
+                        <h5 class="text-light mb-4">Address</h5>
+                        <p class="mb-2"><i class="fa fa-map-marker-alt me-3"></i>Punjab, India</p>
+                        <p class="mb-2"><i class="fa fa-phone-alt me-3"></i>+91 98765-XXXXX</p>
+                        <p class="mb-2"><i class="fa fa-envelope me-3"></i>help.rx@support.com</p>
+                        <div class="d-flex pt-2">
+                            <a class="btn btn-outline-light btn-social rounded-circle" href=""><i class="fab fa-twitter"></i></a>
+                            <a class="btn btn-outline-light btn-social rounded-circle" href=""><i class="fab fa-facebook-f"></i></a>
+                            <a class="btn btn-outline-light btn-social rounded-circle" href=""><i class="fab fa-youtube"></i></a>
+                            <a class="btn btn-outline-light btn-social rounded-circle" href=""><i class="fab fa-linkedin-in"></i></a>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6">
+                        <h5 class="text-light mb-4">Services</h5>
+                        <a class="btn btn-link" href="">Best Medicines</a>
+                        <a class="btn btn-link" href="">Medicine Tracking</a>
+                        <a class="btn btn-link" href="">Verification</a>
+                        <a class="btn btn-link" href="">Support 24 x 7</a>
+                    </div>
+                    <div class="col-lg-3 col-md-6">
+                        <h5 class="text-light mb-4">Quick Links</h5>
+                        <a class="btn btn-link" href="">About Us</a>
+                        <a class="btn btn-link" href="">Contact Us</a>
+                        <a class="btn btn-link" href="">Our Services</a>
+                        <a class="btn btn-link" href="">Terms & Condition</a>
+                    </div>
+                    <div class="col-lg-3 col-md-6">
+                        <h5 class="text-light mb-4">Having Query?</h5>
+                        <p>Add Your Mail to our Data-Set Our Team will Reach you Shortly...</p>
+                        <div class="position-relative mx-auto" style="max-width: 400px;">
+                            <input class="form-control border-0 w-100 py-3 ps-4 pe-5" type="text" placeholder="Your email">
+                            <button type="button" class="btn btn-primary py-2 position-absolute top-0 end-0 mt-2 me-2">Send</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="container" style="justify-items: center;">
+                <div class="copyright">
+                    <div class="row">
+                        <div class="col-md-6 text-center text-md-start mb-3 mb-md-0" style="margin-left: 40%;">
+                            &copy; <a class="border-bottom" href="#">HELP-RX</a>, All Right Reserved.
+                        </div>
+                </div>
+            </div>
+        </div>
+        </div>
+        <!-- Footer End -->
+    
+    <script src="./js/data.js"></script>
+    <script>
+        function toggleLike(button) {
+            button.classList.toggle('active');
+            button.innerHTML = button.classList.contains('active') ? '<i class="fas fa-heart"></i>' : '<i class="far fa-heart"></i>'; // Filled and empty heart
+        }
+
+        function generateStars(rating) {
+            let stars = '';
+            for (let i = 1; i <= 5; i++) {
+                if (i <= rating) {
+                    stars += `<i class="fas fa-star"></i>`; // Filled star
+                } else {
+                    stars += `<i class="far fa-star"></i>`; // Empty star
+                }
+            }
+            return stars;
+        }
+
+        function calculateDiscount(originalPrice, discount) {
+            return (originalPrice - (originalPrice * discount)).toFixed(2);
+        }
+
+        function displayMedicines() {
+    const cardGrid = document.querySelector('.card-grid');
+    cardGrid.innerHTML = ""; // Clear existing cards if any
+
+    // Group medicines by category
+    const categorizedMedicines = medicines.reduce((acc, medicine) => {
+        acc[medicine.category] = acc[medicine.category] || [];
+        acc[medicine.category].push(medicine);
+        return acc;
+    }, {});
+
+    // Loop through each category
+    for (const [category, meds] of Object.entries(categorizedMedicines)) {
+        // Create a category heading
+        const categoryHeading = document.createElement('h2');
+        categoryHeading.textContent = category;
+        categoryHeading.classList.add('category-heading');
+        cardGrid.appendChild(categoryHeading);
+
+        // Create medicine cards for each category
+        meds.forEach((medicine) => {
+            const card = document.createElement('div');
+            card.classList.add('card');
+            card.innerHTML = `
+                <div class="card-header">
+                    <div class="discount-badge"> ${medicine.discount * 100}% Off</div>
+                    <img src="${medicine.image}" alt="${medicine.name}">
+                    <button class="heart-btn" title="like" onclick="toggleLike(this)"><i class="fas fa-heart"></i></button>
+                    <button class="card-btn" onclick="addToCart(this)"><i class="fas fa-shopping-cart"></i> Add to Cart</button>
+                </div>
+                <div class="card-body">
+                    <div class="medicine-name">${medicine.name}</div>
+                    <div class="card-text">${medicine.description}</div>
+                    <div style="display: flex; justify-content: space-between; align-items: center;">
+                        <div class="rating">${generateStars(medicine.rating)}</div>
+                        <div class="price">
+                            <span style="text-decoration: line-through; color: #666;">$${medicine.originalPrice.toFixed(2)}</span>
+                            <span style="margin-left: 10px; color: #007bff; font-weight: bold;">$${calculateDiscount(medicine.originalPrice, medicine.discount)}</span>
+                        </div>
+                    </div>
+                </div>
+            `;
+            cardGrid.appendChild(card);
+        });
+    }
+}
+
+        var addToCart = (button) =>{
+            if(button.innerHTML === `<i class="fas fa-shopping-cart"></i> Add to Cart`)
+            button.innerHTML = `<i class="fas fa-shopping-cart"> Added to Cart`;
+            else
+            button.innerHTML = `<i class="fas fa-shopping-cart"></i> Add to Cart`;
+        }
+        window.onload = displayMedicines;
+    </script>
+    <!-- Bootstrap JS, Popper.js (Required for dropdown) -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.11.6/umd/popper.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>
