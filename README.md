@@ -42,11 +42,12 @@ Administrators who manage the overall platform can:
 
 ## 🚀 Technologies Used
 
-- *Frontend*: HTML, CSS, Bootstrap, JavaScript
-- *Backend*: Node.js, Express.js (if applicable)
-- *Database*: MongoDB (for storing user data, donations, and requests)
-- *IoT*: Integration for fire detection alerts
+- HTML
+- CSS
+- Bootstrap
+- Javascript
 - *Version Control*: Git and GitHub for source code management
+- jQuery
 
 ---
 
@@ -57,16 +58,11 @@ Administrators who manage the overall platform can:
    git clone https://github.com/your-username/HelpRx.git
    cd HelpRx
    
-2. *Install Dependencies* (if applicable):
-   bash
-   npm install
+2. *Open index.html* (if applicable):
+Then click on Open with live server
    
 3. *Run the Application*:
-   bash
-   npm start
-   
-4. *Access the App*:
-   Open your browser and go to http://localhost:3000.
+
 
 ---
 
@@ -76,38 +72,13 @@ We are a passionate team dedicated to making healthcare more accessible:
 
 | Name        | Role               |
 |-------------|--------------------|
-| Mishthy     | Frontend Developer | 
-| Nikhil      | Team Lead & Backend Developer |
-| Lakshita    | UI/UX Designer     |
-| Sahil       | Full Stack Developer |
+| Mishthy     | Product Interface Design & Management | 
+| Nikhil      | Frontend Developer & Responsiveness |
+| Lakshita    | UI/UX Design & Content Management |
+| Sahil       | User Management & Authentication |
 
 ---
 
-## 📋 Project Structure
-
-
-HelpRx/
-├── public/
-│   ├── css/
-│   ├── js/
-│   ├── images/
-├── views/
-│   ├── index.html
-│   ├── login.html
-│   ├── signup.html
-│   ├── dashboard.html
-├── routes/
-│   ├── needy.js
-│   ├── donor.js
-│   ├── admin.js
-├── controllers/
-├── models/
-├── .env
-├── server.js
-└── README.md
-
-
----
 
 ## 📜 License
 
@@ -119,18 +90,25 @@ This project is licensed under the MIT License
 
 - *Font Awesome* for icons
 - *Bootstrap* for responsive design
+- *Open Source Libraries* from Github (e.g. Owl,Testimonials etc.)
 
 ---
 
 ## 📞 Contact Us
 
 Feel free to reach out for any queries or contributions!
-
+1. Nikhil Goyal
 - *Email*: [nikhilgoyal@gmail.com](mailto:nikhilgoyal@gmail.com)
-- *Phone*: +91 6281154623
-- *LinkedIn*: [Nikhil Goyal](https://www.linkedin.com/in/nikhil1718)
-- *Instagram*: [nikhill_goyall](https://www.instagram.com/nikhill_goyall/)
-
+- *Phone*: +91 62807XXXXX
+2. Lakshita 
+- *Email*: [lakshita@gmail.com](mailto:lakshita@gmail.com)
+- *Phone*: +91 79018XXXXX
+3. Mishthy
+- *Email*: [mishthy@gmail.com](mailto:lakshita@gmail.com)
+- *Phone*: +91 88726XXXXX
+4. Sahil
+- *Email*: [sahil@gmail.com](mailto:lakshita@gmail.com)
+- *Phone*: +91 90412XXXXX
 ---
 
 ## ⭐️ Support the Project
