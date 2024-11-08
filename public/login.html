@@ -323,7 +323,7 @@
             <a href="#" class="google"><i class="fab fa-google"></i></a>
             <a href="#" class="facebook"><i class="fab fa-facebook-f"></i></a>
             <a href="#" class="twitter"><i class="fab fa-twitter"></i></a>
-            <i class="fa-brands fa-snapchat"></i>
+            
 
           </div>
         </div>
@@ -385,36 +385,66 @@
 </div>
 <!-- Footer End -->
  
-  <script>
-    function pageLoad() {
-      document.getElementById("emailError").style.display = "none";
-      document.getElementById("passwordError").style.display = "none";
+<script>
+  function pageLoad() {
+    // Hide error messages on page load
+    document.getElementById("emailError").style.display = "none";
+    document.getElementById("passwordError").style.display = "none";
+  }
+
+  function validateForm() {
+    // Raw credentials for validation (this would be securely handled in production)
+    const validEmail = "admin@example.com";
+    const validPassword = "admin123";
+
+    // Get input values
+    const email = document.getElementById("email").value;
+    const password = document.getElementById("password").value;
+
+    // Get error message elements
+    const emailError = document.getElementById("emailError");
+    const passwordError = document.getElementById("passwordError");
+
+    let valid = true;
+
+    // Validate email format
+    if (!validateEmail(email)) {
+      emailError.style.display = "block";
+      emailError.textContent = "Please enter a valid email";
+      valid = false;
+    } else {
+      emailError.style.display = "none";
     }
-    function validateForm() {
-      var email = document.getElementById("email").value;
-      var password = document.getElementById("password").value;
-      var emailError = document.getElementById("emailError");
-      var passwordError = document.getElementById("passwordError");
-      var valid = true;
-      if (!validateEmail(email)) {
-        emailError.style.display = "block";
-        valid = false;
-      } else {
-        emailError.style.display = "none";
-      }
-      if (password.length < 6) {
-        passwordError.style.display = "block";
-        valid = false;
-      } else {
-        passwordError.style.display = "none";
-      }
-      return valid;
+
+    // Validate password length
+    if (password.length < 6) {
+      passwordError.style.display = "block";
+      passwordError.textContent = "Password must be at least 6 characters long";
+      valid = false;
+    } else {
+      passwordError.style.display = "none";
     }
-    function validateEmail(email) {
-      var regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-      return regex.test(email);
+
+    // Check credentials and redirect if valid
+    if (valid && email === validEmail && password === validPassword) {
+      window.location.href = "admin-dash.html";
+      return false; // Prevent form submission
+    } else if (valid) {
+      // Show error if email and password do not match
+      emailError.style.display = "block";
+      emailError.textContent = "Invalid email or password";
+      valid = false;
     }
-  </script>
+
+    return valid; // Prevent form submission if invalid
+  }
+
+  function validateEmail(email) {
+    // Email regex for validation
+    const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return regex.test(email);
+  }
+</script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
