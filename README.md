@@ -74,12 +74,12 @@ Administrators who manage the overall platform can:
 
 We are a passionate team dedicated to making healthcare more accessible:
 
-| Name        | Role               | GitHub Profile                                      |
-|-------------|--------------------|-----------------------------------------------------|
-| Mishthy     | Frontend Developer | [Mishthy's GitHub](https://github.com/mishthy)      |
-| Nikhil      | Team Lead & Backend Developer | [Nikhil's GitHub](https://github.com/nikhil1718)   |
-| Lakshita    | UI/UX Designer     | [Lakshita's GitHub](https://github.com/lakshita)    |
-| Sahil       | Full Stack Developer | [Sahil's GitHub](https://github.com/sahil)         |
+| Name        | Role               |
+|-------------|--------------------|
+| Mishthy     | Frontend Developer | 
+| Nikhil      | Team Lead & Backend Developer |
+| Lakshita    | UI/UX Designer     |
+| Sahil       | Full Stack Developer |
 
 ---
 
@@ -111,7 +111,7 @@ HelpRx/
 
 ## 📜 License
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+This project is licensed under the MIT License
 
 ---
 
@@ -119,8 +119,6 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 - *Font Awesome* for icons
 - *Bootstrap* for responsive design
-- *OpenWeather API* (if weather data is integrated)
-- *MongoDB Atlas* for cloud-based database management
 
 ---
 
