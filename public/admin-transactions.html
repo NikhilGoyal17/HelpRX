@@ -18,14 +18,14 @@
             font-family: 'Poppins', sans-serif;
             min-height: 100vh;
             background-color: #f0f8ff;
-            display: flex;
+            /* display: flex; */
             justify-content: center;
             align-items: center;
             position: relative;
-            overflow: hidden;
+            /* overflow: hidden; */
         }
 
-        .container {
+        .container-1 {
             width: 90%;
             max-width: 1000px;
             background-color: #fff;
@@ -36,6 +36,8 @@
             position: relative;
             overflow: hidden;
             animation: fadeIn 0.5s ease-in-out;
+            margin-left: 16.5%;
+            margin-top: 2.5%;
         }
 
         @keyframes fadeIn {
@@ -50,14 +52,14 @@
             }
         }
 
-        .container h2 {
+        .container-1 h2 {
             text-align: center;
             color: #1e90ff;
             margin-bottom: 30px;
             transition: color 0.3s ease;
         }
 
-        .container h2:hover {
+        .container-1 h2:hover {
             color: #104e8b;
         }
 
@@ -157,10 +159,64 @@
             }
         }
     </style>
+    <link rel="stylesheet" href="./css/bootstrap.min.css">
+    <link rel="stylesheet" href="./css/style.css">
 </head>
 
 <body>
-    <div class="container">
+    <!-- Topbar Start -->
+<div class="container-fluid bg-light p-0 wow fadeIn" data-wow-delay="0.1s">
+    <div class="row gx-0 d-none d-lg-flex">
+        <div class="col-lg-7 px-5 text-start">
+            <div class="h-100 d-inline-flex align-items-center py-3 me-4">
+                <small class="fa fa-map-marker-alt text-primary me-2"></small>
+                <small>Punjab, India</small>
+            </div>
+            <div class="h-100 d-inline-flex align-items-center py-3">
+                <small class="far fa-clock text-primary me-2"></small>
+                <small>Mon - Sat : 09.00 AM - 09.00 PM</small>
+            </div>
+        </div>
+        <div class="col-lg-5 px-5 text-end">
+            <div class="h-100 d-inline-flex align-items-center py-3 me-4">
+                <small class="fa fa-phone text-primary me-2"></small>
+                <small>+91 98765-XXXXX</small>
+            </div>
+            <div class="h-100 d-inline-flex align-items-center">
+                <a href="https://www.facebook.com/" class="btn btn-sm-square rounded-circle  text-primary me-1" href=""><i class="fab fa-facebook-f"></i></a>
+                <a href="https://x.com/" class="btn btn-sm-square rounded-circle  text-primary me-1" href=""><i class="fab fa-twitter"></i></a>
+                <a href="https://www.linkedin.com/in/nikhil-goyal-841085304/" class="btn btn-sm-square rounded-circle  text-primary me-1" href=""><i class="fab fa-linkedin-in"></i></a>
+                <a href="https://www.instagram.com/" class="btn btn-sm-square rounded-circle  text-primary me-1" href=""><i class="fab fa-instagram"></i></a>
+            </div>
+        </div>
+    </div>
+  </div>
+  <!-- Topbar End -->
+  
+  
+ <!-- Navbar Start -->
+ <nav class="navbar navbar-expand-lg bg-white navbar-light sticky-top p-0 wow fadeIn" data-wow-delay="0.1s">
+    <a href="index.html" class="navbar-brand d-flex align-items-center px-4 px-lg-5">
+        <h1 class="m-0 text-primary"><i class="far fa-hospital me-3"></i>Help-RX</h1>
+    </a>
+    <button type="button" class="navbar-toggler me-4" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarCollapse">
+        <div class="navbar-nav ms-auto p-4 p-lg-0">
+          <a href="./admin-profile.html" class="nav-item nav-link ">Profile</a>
+            <a href="./admin-medicine.html" class="nav-item nav-link ">Medicines</a>
+            <a href="./admin-transactions.html" class="nav-item nav-link active">Transactions</a>
+            <a href="./admin-user.html" class="nav-item nav-link">Users</a>
+            <a href="./card.html" class="nav-item nav-link">Med-Store</a>
+            <a href="./admin-settings.html" class="nav-item nav-link ">Settings</a>
+        
+        </div>
+        <!-- <a href="./login.html" class="btn btn-primary rounded-0 py-4 px-lg-5 d-none d-lg-block">Get Started<i class="fa fa-arrow-right ms-3"></i></a> -->
+    </div>
+</nav>
+<!-- Navbar End -->
+    <div class="container-1">
         <h2>Admin Transaction Verification</h2>
         <div class="search-container">
             <input type="text" id="searchInput" placeholder="Search by transaction ID or user name..." onkeyup="searchTransactions()">
@@ -181,7 +237,56 @@
             </tbody>
         </table>
     </div>
-
+<!-- Footer Start -->
+<div class="container-fluid bg-dark text-light footer mt-5 pt-5 wow fadeIn" data-wow-delay="0.1s">
+    <div class="container py-5">
+        <div class="row g-5">
+            <div class="col-lg-3 col-md-6">
+                <h5 class="text-light mb-4">Address</h5>
+                <p class="mb-2"><i class="fa fa-map-marker me-3"></i>Punjab, India</p>
+                <p class="mb-2"><i class="fa fa-phone-alt me-3"></i>+91 98765-XXXXX</p>
+                <p class="mb-2"><i class="fa fa-envelope me-3"></i>help.rx@support.com</p>
+                <div class="d-flex pt-2">
+                    <a class="btn btn-outline-light btn-social rounded-circle" href=""><i class="fab fa-twitter"></i></a>
+                    <a class="btn btn-outline-light btn-social rounded-circle" href=""><i class="fab fa-facebook-f"></i></a>
+                    <a class="btn btn-outline-light btn-social rounded-circle" href=""><i class="fab fa-youtube"></i></a>
+                    <a class="btn btn-outline-light btn-social rounded-circle" href=""><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6">
+                <h5 class="text-light mb-4">Services</h5>
+                <a class="btn btn-link" href="">Best Medicines</a>
+                <a class="btn btn-link" href="">Medicine Tracking</a>
+                <a class="btn btn-link" href="">Verification</a>
+                <a class="btn btn-link" href="">Support 24 x 7</a>
+            </div>
+            <div class="col-lg-3 col-md-6">
+                <h5 class="text-light mb-4">Quick Links</h5>
+                <a class="btn btn-link" href="">About Us</a>
+                <a class="btn btn-link" href="">Contact Us</a>
+                <a class="btn btn-link" href="">Our Services</a>
+                <a class="btn btn-link" href="">Terms & Condition</a>
+            </div>
+            <div class="col-lg-3 col-md-6">
+                <h5 class="text-light mb-4">Having Query?</h5>
+                <p>Add Your Mail to our Data-Set Our Team will Reach you Shortly...</p>
+                <div class="position-relative mx-auto" style="max-width: 400px;">
+                    <input class="form-control border-0 w-100 py-3 ps-4 pe-5" type="text" placeholder="Your email">
+                    <button type="button" class="btn btn-primary py-2 position-absolute top-0 end-0 mt-2 me-2">Send</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container" style="justify-items: center;">
+        <div class="copyright">
+            <div class="row">
+                <div class="col-md-6 text-center text-md-start mb-3 mb-md-0" style="margin-left: 40%;">
+                    &copy; <a class="border-bottom" href="#">HELP-RX</a>, All Right Reserved.
+                </div>
+        </div>
+    </div>
+  </div>
+  <!-- Footer End -->
     <script>
         // Sample data for transaction management (replace with actual data from your database)
         const transactions = [
